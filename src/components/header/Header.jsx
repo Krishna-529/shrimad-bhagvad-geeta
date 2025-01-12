@@ -1,5 +1,7 @@
 import React,{useState} from "react";
 import Search from "./Search";
+import About from "./About";
+import Dropdown from "./Dropdown";
 
 function Header(props){
     const [darkmode, setDarkmode] = useState(props.darkmode);
@@ -17,9 +19,22 @@ function Header(props){
     return(
         <div className="header">
             <div className="logo">Geeta</div>
-            {/* <div className="about"><div>About</div></div>
-            <Search /> */}
-        </div>
+            <About />
+            <Search 
+                changeChapter={changeChapter}
+                changeVerse={changeVerse}
+            />
+            <Dropdown
+                hindi={hindi}
+                english={english}
+                sanskrit={sanskrit}
+                darkmode={darkmode}
+                toggleTheme={toggleTheme}
+                toggleEnglish={toggleEnglish}
+                toggleHindi={toggleHindi}
+                toggleSanskrit={toggleSanskrit}
+            />
+        </div>        
     )
 }
 

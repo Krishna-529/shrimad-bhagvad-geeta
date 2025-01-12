@@ -5,17 +5,20 @@ import VerticalTab from "./verticalTab/VerticalTab";
 import Content from "./content/Content";
 import Footer from "./footer/Footer";
 
-function App(){
+function App(props){
     const [tabOpen, setTabOpen] = useState(true);
-    const [chapter, setChapter] = useState(2);
-    const [verse, setVerse] = useState(47);
+    const [chapter, setChapter] = useState(Number(props.chapter));
+    const [verse, setVerse] = useState(Number(props.verse));
     const [darkmode, setDarkmode] = useState(false);
     const [english, setEnglish] = useState(true);
     const [hindi, setHindi] = useState(true);
     const [sanskrit, setSanskrit] = useState(true);
-    const [customKey, setCustomKey] = useState(chapter+"/"+verse)
+    const [customKey1, setCustomKey1] = useState(chapter+"/"+verse)
+    const [customKey2, setCustomKey2] = useState(chapter+"-"+verse)
     function changeKey(chapter, verse){
-        setCustomKey(chapter+"/"+verse)
+        setCustomKey1(chapter+"/"+verse)
+        setCustomKey2(chapter+"-"+verse)
+        localStorage.setItem('chapterAndVerse', JSON.stringify({ chapter: chapter, verse: verse }))
     }
 
     const numberOfVerses = [47, 72, 43, 42, 29, 47, 30, 28, 34, 42, 55, 20, 35, 27, 20, 24, 28, 78];
@@ -25,7 +28,7 @@ function App(){
         if(chap>0 && chap<19 && chap!=chapter){
             setChapter(chap);
             setVerse(1);
-            changeKey(chapter, verse);
+            changeKey(chap, verse);
         }
     }
 
@@ -33,7 +36,7 @@ function App(){
         let vers = Number(v);
         if(vers!=verse){
             setVerse(vers);
-            changeKey(chapter, verse);
+            changeKey(chapter, vers);
         }
     }
 
@@ -43,16 +46,17 @@ function App(){
     }
 
     function toggleEnglish(){
-        setEnglish(!english)
+        setEnglish(!english);
     }
 
     function toggleSanskrit(){
-        setSanskrit(!sanskrit)
+        setSanskrit(!sanskrit);
     }
 
     function toggleHindi(){
-        setHindi(!hindi)
+        setHindi(!hindi);
     }
+
     function toggleTabOpen(){
         setTabOpen(!tabOpen);
     }
@@ -76,13 +80,14 @@ function App(){
             toggleSanskrit={toggleSanskrit}
             />
         <HorizontalTab 
-                key={customKey}
+                key={customKey1}
                 chapter={chapter} 
                 verse={verse}
                 changeVerse={changeVerse}
             />
         <div className="container">
-            <VerticalTab 
+            <VerticalTab
+                key={customKey2}
                 chapter={chapter}
                 tabOpen={tabOpen}
                 toggleTabOpen={toggleTabOpen}

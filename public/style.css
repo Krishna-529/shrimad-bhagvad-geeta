@@ -9,7 +9,7 @@
     width: 100vw;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Hide the scrollbar but allow scrolling */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
@@ -18,7 +18,6 @@ body {
     font-family: 'EB Garamond', serif;
 }
 
-/* Hide Scrollbar Completely but Allow Scrolling */
 .app, .horizontal-container, .chapter-container {
     scrollbar-width: none; 
 }
@@ -26,7 +25,7 @@ body {
 .app::-webkit-scrollbar, body::-webkit-scrollbar,
 .horizontal-container::-webkit-scrollbar, 
 .chapter-container::-webkit-scrollbar {
-    display: none; /* Hides the scrollbar */
+    display: none;
 }
 
 .app, .horizontal-container, .chapter-container {
@@ -35,59 +34,227 @@ body {
 
 /* Header */
 .header {
+    position: relative;
     flex: 0 0 52px;
     top: 0;
     left: 0;
     background-color: #FFA738;
     height: 52px;
-    width: 100vw;
+    width: calc(100vw - 40px);
     margin: 0;
+    padding-right: 20px;
     padding-left: 20px;
-    overflow: hidden;
+    overflow-x: hidden;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     gap: 20px;
     font-size: 24px;
     color: #4E3629;
 }
 
 .logo {
-    margin-bottom: 7px;
+    height: 100%;
     font-weight: 500;
     font-size: 36px;
-    flex: 7;
+    flex: 8;
 }
 
 .about {
-    margin-top: 11px;
-    margin-bottom: 10px;
+    align-self: center;
     text-align: center;
     font-weight: 500;
+    font-size: 18px;
     flex: 1;
 }
 
-.search {
-    flex: 4;
+/* Search bar */
+.search-container {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+}
+
+.search-select {
+  padding: 10px; 
+  font-size: 14px;
+  border-radius: 6px; 
+  background-color: #fbd288;
+  min-width: 120px; 
+  outline: none;
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s; 
+}
+
+.search-select:hover {
+  border-color: #784e38; 
+}
+
+.search-select:focus {
+  border-color: #784e38; 
+  box-shadow: 0 0 5px rgba(120, 78, 56, 0.5); 
+  outline: none; /* Remove default outline */
+}
+
+.search-button {
+  padding: 10px 20px; /* Increased padding for a better button size */
+  font-size: 14px; /* Adjusted font size for consistency */
+  background-color: #784e38; /* Maintain original background color */
+  color: white;
+  border: none;
+  border-radius: 6px; /* Match button style with dropdown */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+  outline: none;
+}
+
+.search-button:hover {
+  background-color: #4e3629; /* Darker shade on hover */
+}
+
+.search-button:disabled {
+  background-color: #a18677; /* Maintain disabled state */
+  cursor: not-allowed; /* Indicate non-interaction */
+}
+
+select option {
+  color: #4E3629; /* Default text color */
+  background-color: #fbd288; /* Default background for options */
+  transition: background-color 0.2s; /* Add smooth hover transition */
+}
+
+select option:hover {
+  background-color: #4e3629; /* Highlight hovered option */
+  color: white; /* Ensure good contrast on hover */
+}
+
+select {
+  overflow: hidden; /* Hides overflow and scrollbar */
+  -ms-overflow-style: none; /* Hides scrollbar in IE */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+select::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome, Safari, Edge */
+}
+
+
+  
+
+.dropdown-container {
+    flex: 2;
+    font-size: 18px;
+    align-self: center;
+    /* background-color: #FBD288; */
+  }
+  
+  .dropdown-toggle-button {
+    height: 32px;
+    background-color: #FBD288;
+    color: #4e3629;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-toggle-button:hover {
+    background-color: #F0BB78;
+  }
+  
+  .dropdown-arrow {
+    margin-left: 8px;
+  }
+  
+  .dropdown-menu {
+    position: fixed;
+    top: 32px; /* Ensure it opens below the button */
+    right: 20px;
+    background-color: #fbd288;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    width: 250px;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+  }
+  
+  .dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdown-menu li {
     display: flex;
-}
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    list-style: none;
+    border-bottom: 1px solid #e0a96b;
+  }
+  
+  .dropdown-menu li:last-child {
+    border-bottom: none;
+  }
+  
+  .dropdown-menu li:hover {
+    background-color: #ffd9b2;
+  }
+  
+  /* Toggle switch styling */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+  }
+  
+  .toggle-switch input {
+    display: none;
+  }
+  
+  .slider-checkbox {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+  }
+  
+  .slider-checkbox:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider-checkbox {
+    background-color: #4caf50;
+  }
+  
+  input:checked + .slider-checkbox:before {
+    transform: translateX(20px);
+  }
 
-.search p {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: 500;
-}
-
-input {
-    margin-top: 5px;
-    height: 36px;
-    width: 100px;
-    border: 0;
-    border-radius: 25px;
-    text-align: center;
-    background-color: #dfa63b;
-}
-
-.horizontal-tab {
+  .horizontal-tab {
     flex: 0 0 36px;
     height: 36px;
     width: 100vw;
@@ -95,9 +262,34 @@ input {
     margin: 0;
     padding: 0;
     background-color: #F0BB78;
-    overflow: hidden;
+    overflow: hidden; /* Ensures no overflow in both X and Y directions */
     display: grid;
     grid-template-columns: 50px 1fr 50px;
+}
+
+.horizontal-container {
+    margin: 0;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    white-space: nowrap;
+    overflow-x: scroll; /* Allows horizontal scrolling */
+    overflow-y: hidden; /* Restricts any vertical scrolling */
+    cursor: default;
+}
+
+.verse-number {
+    flex: 0 0 auto;
+    font-size: 16px;
+    color: #4E3629;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.verse-number:hover {
+    color: #8a4722;
+    text-decoration: underline;
 }
 
 .left-navigator, .right-navigator {
@@ -124,29 +316,6 @@ input {
     transform: scale(0.95);
 }
 
-.horizontal-container {
-    margin: 0;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    white-space: nowrap;
-    overflow-x: scroll; /* Allow horizontal scrolling */
-    cursor: default;
-}
-
-.verse-number {
-    flex: 0 0 auto;
-    font-size: 16px;
-    color: #4E3629;
-    text-align: center;
-    white-space: nowrap;
-}
-
-.verse-number:hover {
-    color: #8a4722;
-    text-decoration: underline;
-}
 
 /* Container */
 .container {
@@ -165,7 +334,7 @@ input {
 }
 
 .slider {
-    flex: 0 0 16px;
+    flex: 0 0 14px;
     background-color: #FFA738;
     margin: 0;
     padding: 0;
@@ -220,7 +389,7 @@ input {
 }
 
 .content-box {
-    min-height: 75%;
+    height: 75%;
     width: 75%;
     background-color: #FFFDE3;
     border: 2px solid #4E362980;
@@ -248,13 +417,38 @@ input {
     background-color: #fffbc2;
 }
 
-/* .navigate-button:hover{
-    border: 2px solid #4E362980;
-} */
-
 .inner-content{
     flex: 1;
+    height: 100%;
+    width: 100%;
+    padding: 0%;
+}
+
+.shlok{
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
     /* background-color: chartreuse; */
+    width: 100%;
+}
+
+.inner-content-div{
+    margin: 0%;
+    padding: 0%;
+    height: 100%;
+    /* background-color: chartreuse; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    gap: 1px;
+    
+}
+
+.english{
+    font-size: 20px;
 }
 
 /* footer */
@@ -267,3 +461,5 @@ input {
     justify-content: center;
     align-items: center;
 }
+
+
