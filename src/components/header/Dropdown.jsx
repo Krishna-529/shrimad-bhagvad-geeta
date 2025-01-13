@@ -34,6 +34,7 @@ function Dropdown(props) {
   return (
     <div className="dropdown-container" ref={dropdownRef}>
       <button
+        aria-label="Setting"
         className="dropdown-toggle-button"
         onClick={handleDropdownToggle}
         aria-expanded={isOpen}
