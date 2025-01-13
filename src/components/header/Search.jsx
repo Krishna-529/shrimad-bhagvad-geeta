@@ -28,6 +28,7 @@ function Search({ changeChapter, changeVerse }) {
     <div className="search-container">
       <select
         className="search-select"
+        aria-label="Select chapter"
         onChange={(e) => setSelectedChapter(Number(e.target.value))}
         value={selectedChapter === null ? '' : selectedChapter}
       >
@@ -39,6 +40,7 @@ function Search({ changeChapter, changeVerse }) {
         ))}
       </select>
       <select
+        aria-label="Select Verse"
         className="search-select"
         onChange={(e) => setSelectedVerse(Number(e.target.value))}
         value={selectedVerse === null ? '' : selectedVerse}
