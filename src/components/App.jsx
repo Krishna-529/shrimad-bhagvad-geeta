@@ -86,14 +86,7 @@ function App(props){
                 changeVerse={changeVerse}
             />
         <div className="container">
-            <VerticalTab
-                key={customKey2}
-                chapter={chapter}
-                tabOpen={tabOpen}
-                toggleTabOpen={toggleTabOpen}
-                setTabOpen={setTabOpen}
-                changeChapter={changeChapter}
-            />
+            
             <Content 
                 key={`${chapter}/${verse}`}
                 chapter={chapter}
@@ -104,6 +97,14 @@ function App(props){
                 hindi={hindi}
             />
         </div>
+        <VerticalTab
+                key={customKey2}
+                chapter={chapter}
+                tabOpen={tabOpen}
+                toggleTabOpen={toggleTabOpen}
+                setTabOpen={setTabOpen}
+                changeChapter={changeChapter}
+            />
         <Footer />
     </div>
     )

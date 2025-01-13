@@ -22,10 +22,12 @@ function Shlok(props) {
                     `https://vedicscriptures.github.io/slok/${ch}/${sl}`
                 );
                 const obj = response.data;
+                console.log(obj);
+                
 
                 setSanskritShlok(obj.slok || "No Sanskrit text available.");
                 setEnglishShlok(obj.prabhu?.et || "No English translation available.");
-                setHindiShlok(obj.sankar?.hc || "No Hindi translation available.");
+                setHindiShlok(obj.rams?.ht || "No Hindi translation available.");
                 setError(null);
             } catch (error) {
                 console.error("Error fetching data:", error);

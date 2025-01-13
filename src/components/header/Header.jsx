@@ -18,7 +18,7 @@ function Header(props){
 
     return(
         <div className="header">
-            <div className="logo">Geeta</div>
+            <div className="logo"><div>Geeta</div></div>
             <About />
             <Search 
                 changeChapter={changeChapter}

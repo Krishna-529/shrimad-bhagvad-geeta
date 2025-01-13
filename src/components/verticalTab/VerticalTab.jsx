@@ -28,13 +28,14 @@ function VerticalTab(props){
     }
 
     const  customStyleTabClosed= {flex: "0 0 48px"}
+    const customClass = "slider-open-" + String(tabOpen);
     const customStyleTabOpen  = {flex: "0 0 188px"}
 
     return(
-        <div className="vertical-tab" style={tabOpen ? customStyleTabOpen : customStyleTabClosed}>
+        <div className={`vertical-tab ${customClass}`} >
             {showChaptersList()}
-            <Slider tabOpen={tabOpen} toggleTabOpen={toggleTabOpen}/>
-            <div className="slider-button" onClick={toggleTabOpen}>
+            <Slider />
+            <div className={`slider-button`} onClick={toggleTabOpen}>
                 {props.tabOpen ? <ChevronLeftRoundedIcon /> : <ChevronRightRoundedIcon />}
             </div>
         </div>

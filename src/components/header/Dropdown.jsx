@@ -1,4 +1,6 @@
 import React,{ useState, useEffect, useRef }  from "react";
+import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
+
 
 function Dropdown(props) {
   const [darkmode, setDarkmode] = useState(props.darkmode);
@@ -36,7 +38,7 @@ function Dropdown(props) {
         onClick={handleDropdownToggle}
         aria-expanded={isOpen}
       >
-        Settings <span className="dropdown-arrow">{isOpen ? "▲" : "▼"}</span>
+        <SettingsRoundedIcon sx={{ fontSize: 'clamp(15px, 1.25vw, 32px)'}} />
       </button>
       <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
         <li>

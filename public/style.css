@@ -14,6 +14,10 @@
     flex-direction: column;
 }
 
+.app{
+  position: relative;
+}
+
 body {
     font-family: 'EB Garamond', serif;
 }
@@ -35,7 +39,7 @@ body {
 /* Header */
 .header {
     position: relative;
-    flex: 0 0 52px;
+    flex: 0 0 7vh;
     top: 0;
     left: 0;
     background-color: #FFA738;
@@ -55,15 +59,17 @@ body {
 .logo {
     height: 100%;
     font-weight: 500;
-    font-size: 36px;
+    font-size: clamp(20px, 2.5vw, 48px);
     flex: 8;
+    display: flex;
+    align-items: center;
 }
 
 .about {
     align-self: center;
     text-align: center;
     font-weight: 500;
-    font-size: 18px;
+    font-size: clamp(15px, 1.25vw, 36px);
     flex: 1;
 }
 
@@ -76,11 +82,14 @@ body {
 }
 
 .search-select {
-  padding: 10px; 
-  font-size: 14px;
+  padding: clamp(1px, 0.5vw, 10px); 
+  font-size: clamp(10px, 1vw, 32px);
+  height: clamp(15px, 2.5vw, 36px);
   border-radius: 6px; 
+  border: none;
   background-color: #fbd288;
-  min-width: 120px; 
+  width: fit-content;
+  /* min-width: 120px;  */
   outline: none;
   -webkit-appearance: none; 
   -moz-appearance: none; 
@@ -90,44 +99,45 @@ body {
 }
 
 .search-select:hover {
-  border-color: #784e38; 
+  box-shadow: 0 0 6px rgba(120, 78, 56, 0.5); 
 }
 
 .search-select:focus {
   border-color: #784e38; 
-  box-shadow: 0 0 5px rgba(120, 78, 56, 0.5); 
-  outline: none; /* Remove default outline */
+  box-shadow: 0 0 8px rgba(120, 78, 56, 0.9); 
+  outline: none; 
 }
 
 .search-button {
-  padding: 10px 20px; /* Increased padding for a better button size */
-  font-size: 14px; /* Adjusted font size for consistency */
-  background-color: #784e38; /* Maintain original background color */
+  padding: clamp(1px, 0.5vw, 10px); 
+  font-size: clamp(10px, 1vw, 32px);
+  height: clamp(15px, 2.5vw, 36px);
+  background-color: #784e38; 
   color: white;
   border: none;
-  border-radius: 6px; /* Match button style with dropdown */
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth hover transition */
+  transition: background-color 0.3s ease;
   outline: none;
 }
 
 .search-button:hover {
-  background-color: #4e3629; /* Darker shade on hover */
+  background-color: #4e3629;
 }
 
 .search-button:disabled {
-  background-color: #a18677; /* Maintain disabled state */
-  cursor: not-allowed; /* Indicate non-interaction */
+  background-color: #a18677; 
+  cursor: not-allowed; 
 }
 
 select option {
-  color: #4E3629; /* Default text color */
-  background-color: #fbd288; /* Default background for options */
-  transition: background-color 0.2s; /* Add smooth hover transition */
+  color: #4E3629;
+  background-color: #fbd288;
+  transition: background-color 0.2s;
 }
 
 select option:hover {
-  background-color: #4e3629; /* Highlight hovered option */
+  background-color: #4e3629;
   color: white; /* Ensure good contrast on hover */
 }
 
@@ -144,37 +154,43 @@ select::-webkit-scrollbar {
 
   
 
-.dropdown-container {
-    flex: 2;
-    font-size: 18px;
-    align-self: center;
-    /* background-color: #FBD288; */
-  }
+.dropdown-container{
+  flex: 1;
+  font-size: clamp(10px, 1vw, 32px);
+  align-self: center;
+  font-size: clamp(10px, 1.25vw, 32px);
+  /* background-color: #4caf50; */
+}
   
-  .dropdown-toggle-button {
-    height: 32px;
-    background-color: #FBD288;
-    color: #4e3629;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .dropdown-toggle-button:hover {
-    background-color: #F0BB78;
-  }
-  
-  .dropdown-arrow {
-    margin-left: 8px;
-  }
+.dropdown-toggle-button {
+  padding: clamp(1px, 0.5vw, 10px); 
+  height: clamp(15px, 2.5vw, 36px);
+  width: clamp(15px, 2.5vw, 36px);
+  background-color: #FBD288;
+  color: #4e3629;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle-button:hover {
+  background-color: #F0BB78;
+}
+
+.dropdown-arrow {
+  margin-left: 8px;
+}
   
   .dropdown-menu {
     position: fixed;
     top: 32px; /* Ensure it opens below the button */
-    right: 20px;
+    right: 6vw;
     background-color: #fbd288;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
@@ -254,17 +270,18 @@ select::-webkit-scrollbar {
     transform: translateX(20px);
   }
 
-  .horizontal-tab {
-    flex: 0 0 36px;
-    height: 36px;
-    width: 100vw;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    background-color: #F0BB78;
-    overflow: hidden; /* Ensures no overflow in both X and Y directions */
-    display: grid;
-    grid-template-columns: 50px 1fr 50px;
+/* Horizontal Tab */
+.horizontal-tab {
+  flex: 0 0 5vh;
+  height: 36px;
+  width: 100vw;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  background-color: #F0BB78;
+  overflow: hidden; 
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
 }
 
 .horizontal-container {
@@ -319,7 +336,7 @@ select::-webkit-scrollbar {
 
 /* Container */
 .container {
-    flex: 0 0 calc(100vh - 80px);
+    flex: 0 0 88vh;
     left: 0;
     margin: 0;
     padding: 0;
@@ -329,8 +346,15 @@ select::-webkit-scrollbar {
 
 /* Vertical Tab */
 .vertical-tab {
-    display: flex;
-    gap: 0;
+  position: absolute;
+  top: 12vh;
+  left: 0px;
+  height: 88vh;
+  z-index: 1;
+  display: flex;
+  gap: 0;
+  margin: 0%;
+  padding: 0%;
 }
 
 .slider {
@@ -338,7 +362,7 @@ select::-webkit-scrollbar {
     background-color: #FFA738;
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: calc(100vh-88px);
 }
 
 .slider-button {
@@ -390,7 +414,7 @@ select::-webkit-scrollbar {
 
 .content-box {
     height: 75%;
-    width: 75%;
+    width: 70%;
     background-color: #FFFDE3;
     border: 2px solid #4E362980;
     backdrop-filter: blur(2px);
@@ -428,23 +452,29 @@ select::-webkit-scrollbar {
     margin: 0%;
     padding: 0%;
     height: 100%;
-    /* background-color: chartreuse; */
     width: 100%;
 }
 
 .inner-content-div{
-    margin: 0%;
-    padding: 0%;
-    height: 100%;
-    /* background-color: chartreuse; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    gap: 1px;
-    
+  margin: 0%;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+.inner-content-div::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 .english{
@@ -462,4 +492,47 @@ select::-webkit-scrollbar {
     align-items: center;
 }
 
+@media(max-width: 480px){
+  .slider-open-true{
+    position: absolute;
+    width: 100vw !important;
+    top: 12vh;
+    left: 0px;
+    height: 88vh;
+    z-index: 1;
+    display: flex;
+    gap: 0;
+    margin: 0%;
+    padding: 0%;
+  }
 
+  .slider-open-true .chapter-container {
+    flex: 0 0 calc(100vw - 14px);
+    background-color: #FBD288;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    overflow-y: scroll; /* Allow vertical scrolling */
+    align-items: center;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .slider-open-true .slider-button {
+    flex: 0 0 32px;
+    right: 46px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: #FFA738;
+    top: 80px;
+    height: 28px;
+    border-radius: 14px 0 0 14px;
+  }
+}
