@@ -2,18 +2,37 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/App";
 
-const storedData = localStorage.getItem('chapterAndVerse');
-const defaultData = { chapter: 1, verse: 1 };
+// Get stored chapter and verse data
+const storedChapterAndVerse = localStorage.getItem('chapterAndVerse');
+const defaultChapterAndVerse = { chapter: 1, verse: 1 };
+const chapterAndVerseData = storedChapterAndVerse ? JSON.parse(storedChapterAndVerse) : defaultChapterAndVerse;
 
-const data = storedData ? JSON.parse(storedData) : defaultData;
-const chapter = data.chapter;
-const verse = data.verse;
+// Get stored settings data
+const storedSettings = localStorage.getItem('gitaSettings');
+const defaultSettings = {
+  darkmode: false,
+  english: true,
+  hindi: true,
+  sanskrit: true
+};
+const settingsData = storedSettings ? JSON.parse(storedSettings) : defaultSettings;
+
+// Extract data
+const { chapter, verse } = chapterAndVerseData;
+const { darkmode, english, hindi, sanskrit } = settingsData;
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <div>
-    <App chapter={chapter} verse={verse} />
+    <App 
+      chapter={chapter} 
+      verse={verse}
+      initialDarkmode={darkmode}
+      initialEnglish={english}
+      initialHindi={hindi}
+      initialSanskrit={sanskrit}
+    />
   </div>
 );
