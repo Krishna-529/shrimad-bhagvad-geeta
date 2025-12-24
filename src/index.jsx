@@ -10,7 +10,7 @@ const chapterAndVerseData = storedChapterAndVerse ? JSON.parse(storedChapterAndV
 // Get stored settings data
 const storedSettings = localStorage.getItem('gitaSettings');
 const defaultSettings = {
-  darkmode: false,
+  darkmode: true,
   english: true,
   hindi: true,
   sanskrit: true
