@@ -234,4 +234,3 @@ Contributing
 
 If you want help extending this project or shipping enhancements (prefetching, caching, tests), open an issue or contact the repository owner.
 
--- End of README
